@@ -17,6 +17,7 @@ CREATE TABLE bitcoin_price_data (
 ```
 
 ### Generic Indicator Data Table DLL
+### MADE ALL VALUES NUMERIC AS TIME_STAMP WILL VARY ACCORDING TO EACH VALUE
 ```sql
 CREATE TABLE bitcoin_indicators (
 	time_stamp_1 numeric,
