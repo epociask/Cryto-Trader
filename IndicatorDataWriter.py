@@ -53,7 +53,7 @@ class IndicatorDataWriter:
       params = config()
       print("Connecting to postgres database...")
       conn = psycopg2.connect(user = "postgres",
-                                  password = "1Derekdad1",
+                                  password = """"""",
                                   host = "localhost",
                                   port = "5433",
                                   database = "coindata")
