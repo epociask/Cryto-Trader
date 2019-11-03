@@ -4,21 +4,20 @@ from config import config
 from datetime import datetime
 import time, sys, json, datetime
 from CoinCap import CoinCap
-import keyboard
 
 
-TABLE_NAME = "bitcoin_price_data"
 
 class PriceDataHandler:
 
   def __init__(self, coin):
     self.coin = coin
+    self.TABLE_NAME = "{}_price_data".format(coin)
 
   # Returns query string to insert data into db
   def generateQuery(self, price, marketCap, dayVolume):
     columns = "(day_volume, price, market_cap)"
     values = "({}, {}, {})".format(dayVolume, price, marketCap)
-    return "INSERT INTO " + TABLE_NAME + " " + columns + " VALUES " + values + ";"
+    return "INSERT INTO " + self.TABLE_NAME + " " + columns + " VALUES " + values + ";"
 
   ## Parses data from API and returns price, day volume, and market cap
   def parseCoinData(self):
@@ -48,20 +47,16 @@ class PriceDataHandler:
     try:
       params = config()
       print("Connecting to postgres database...")
-      conn = psycopg2.connect(**params)
-
+      conn = psycopg2.connect(user = "postgres",
+                                  password = "1Derekdad1",
+                                  host = "localhost",
+                                  port = "5433",
+                                  database = "coindata")
       # create a cursor
       cur = conn.cursor()
-
       # Generate and execute insertion query
-      print("Starting data collection... Press q to quit")
-      while(True):
-        if(keyboard.is_pressed('q')):
-          print("Stopping data collection.")
-          break
-        self.runDataInsertions(cur)
-        conn.commit() # Commits changes to db
-
+      self.runDataInsertions(cur)
+      conn.commit() # Commits changes to db
       cur.close() # Closes communication with db
     except(Exception, psycopg2.DatabaseError) as error:
       print("ERROR: ", error)

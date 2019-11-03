@@ -23,3 +23,24 @@ class Time:
 
 
 		return step
+
+	def calculateRef(self, timePeriod):
+
+		step = 0
+		if timePeriod == "one-minute":
+			step = 1
+
+		elif timePeriod == "five-minute":
+			step = 5
+
+		elif timePeriod == "ten-minute":
+			step = 10
+
+		elif timePeriod == "thirty-minute":
+			step = 30
+
+		elif timePeriod == "one-hour":
+			step = 60
+
+
+		return step		
