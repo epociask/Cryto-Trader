@@ -19,10 +19,24 @@ CREATE TABLE bitcoin_price_data (
 ### Generic Indicator Data Table DLL
 ```sql
 CREATE TABLE bitcoin_indicators (
-    sma_1 integer,
-    sma_5 integer,
-    sma_10 integer,
-    sma_30 integer
+	time_stamp_1 numeric,
+    sma_1 numeric,
+    time_stamp_5 numeric,
+    sma_5 numeric,
+    time_stamp_10 numeric,
+    sma_10 numeric,
+    time_stamp_30 numeric,
+    sma_30 numeric,
+    time_stamp_60 numeric,
+    sma_60 numeric,
+    time_stamp_180 numeric,
+ 	sma_180 numeric,
+	time_stamp_360 numeric,
+	sma_360 numeric,
+	time_stamp_720 numeric,
+	sma_720 numeric,
+	time_stamp_1440 numeric,
+	sma_1440 numeric
 );
 ```
 
