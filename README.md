@@ -43,5 +43,5 @@ CREATE TABLE bitcoin_indicators (
 
 ### To run insertion script (for now at least):
 1. Go to the DataBase dir
-2. Run `python PriceDataHandler.py`
+2. Run `python PriceDataHandler.py` then run `python IndicatorDataWriter.py` to ensure that table properly updates
 > If db is set up correctly, this script should work. If it doesn't your table might not be setup correctly.
