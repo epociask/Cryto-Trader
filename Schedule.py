@@ -1,25 +1,19 @@
-from FileWriter import *
+from PriceDataHandler import *
+from IndicatorDataWriter import *
 import schedule
 import time
-from CalculateSMA import *
 
 class Schedule:
 
-	def __init__(self):
-		self.writer = FileWriter()
-		self.calc = CalculateSMA()
+	def __init__(self, coinName):
+		self.coinName = coinName
+		schedule.every(5).seconds.do(PriceDataHandler(self.coinName).connect)
+		schedule.every(1).minutes.do(IndicatorDataWriter(self.coinName, "one-minute").connect)
+		schedule.every(5).minutes.do(IndicatorDataWriter(self.coinName, "five-minute").connect)
+		schedule.every(10).minutes.do(IndicatorDataWriter(self.coinName, "ten-minute").connect)
+		schedule.every(30).minutes.do(IndicatorDataWriter(self.coinName, "thirty-minute").connect)
 
-	
-	def start(self):
 
-		schedule.every(1).seconds.do(self.writer.writeUpdate , 'bitcoin') 
-		schedule.every(1).seconds.do(self.writer.writeUpdate , 'ethereum') 
-		schedule.every(1).minutes.do(self.calc.calculateSMA , 'ethereum', 'one-minute')
-		schedule.every(5).minutes.do(self.calc.calculateSMA , 'ethereum', 'five-minute')
-		schedule.every(10).minutes.do(self.calc.calculateSMA , 'ethereum', 'ten-minute')
-		schedule.every(1).minutes.do(self.calc.calculateSMA , 'bitcoin', 'one-minute')
-		schedule.every(5).minutes.do(self.calc.calculateSMA , 'bitcoin', 'five-minute')
-		schedule.every(10).minutes.do(self.calc.calculateSMA , 'bitcoin', 'ten-minute')
 
 		while 1:
 			schedule.run_pending()

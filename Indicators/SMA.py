@@ -1,4 +1,4 @@
-#Property of TrendSellers LLC
+#Property of TrendSellers LLC 
 #@author Ethen Pociask
 
 class SMA:
@@ -15,3 +15,7 @@ class SMA:
 
 
 		return priceTotal/len(priceSet)
+
+
+
+	
