@@ -57,5 +57,7 @@ TIME_STAMP timestamp WITHOUT TIMEZONE DEFAULT CURRENT_TIMESTAMP, COIN numeric, B
 2. Run `python PriceDataHandler.py` then run `python IndicatorDataWriter.py` to ensure that table properly updates
 > If db is set up correctly, this script should work. If it doesn't your table might not be setup correctly.
 3. Run `DataBaseDriver.py` to start updating live table values from `CoinAPI`
+##CURRENTLY DEBUGGING MULTIPROCESSING 
+##TO SEE COIN UPDATES RUN MULTIPLE PROGRAMS FROM `DatabaseSchedule.py`
 
 
