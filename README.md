@@ -1,5 +1,6 @@
 # Crypto Trader (NO LONGER MANTAINED)
 <--> This was the start of something much much bigger, now it's just prototyped fossil <-->
+If you're cloning this in hopes of using it as a trading algo, you've come to wrong place 
 ### Setting up the local database:
 1. Make sure postgresql is installed
 2. Start the postgres local server via `pg_ctl -D /usr/local/var/postgres start` on mac
